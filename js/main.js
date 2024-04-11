@@ -11,8 +11,7 @@ searchButton.addEventListener('click', function () {
   if(searchTerm.trim() === ''){
     displaySearchResults([]);
   }else{
-   
-  axios.get(`https://api.github.com/search/${searchType}?q=${searchTerm}`, {
+   axios.get(`https://api.github.com/search/${searchType}?q=${searchTerm}`, {
     headers: {
       'Authorization': `Bearer ${API_KEY}`,
       'X-GitHub-Api-Version': '2022-11-28'
