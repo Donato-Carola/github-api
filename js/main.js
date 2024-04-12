@@ -5,7 +5,16 @@ const searchInput = document.querySelector('input');
 const selectInput = document.querySelector('select');
 const searchButton = document.querySelector('button');
 
+const loader = document.getElementById('loader'); 
+
 searchButton.addEventListener('click', function () {
+  loader.style.display = 'block';
+
+
+  //aggiungere propria APIKEY git
+
+
+
   const searchTerm = searchInput.value;
   const searchType = selectInput.value;
   if(searchTerm.trim() === ''){
@@ -18,13 +27,16 @@ searchButton.addEventListener('click', function () {
     }
   })
   .then(response => {
+     loader.style.display = 'none';
     // Gestione della risposta
     console.log('response', response.data);
     // Esempio di cosa fare con la risposta
     displaySearchResults(response.data.items); // Supponendo che l'array degli elementi restituiti sia accessibile tramite response.data.items
+   
   })
   .catch(error => {
     // Gestione degli errori
+    loader.style.display = 'none';
     console.error('Error:', error);
   });
   }
@@ -48,7 +60,7 @@ function displaySearchResults(results) {
       results.forEach(element => {
    
     const resultElement = document.createElement('div');
-    resultElement.classList.add('col-3');
+    resultElement.classList.add( 'col-sm-12', 'col-md-6', 'col-lg-3' );
     resultElement.innerHTML = `
     <div class='card'>
      <h1>
