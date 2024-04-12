@@ -12,25 +12,26 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <header class="d-flex justify-content-between pt-3 container-fluid">
-      <div> 
-         <h5>GitHub API</h5>
+    <header
+      class="d-flex justify-content-between pt-3 container-fluid flex-wrap"
+    >
+      <div>
+        <h5>GitHub API</h5>
       </div>
-    
-      <div id="loader" class="loader">
 
-      </div>
-      
-      <div class="d-flex">
-        <input class="me-1" type="text" placeholder="Cerca progetto" />
-        <select class="form-select me-1">
+      <div id="loader" class="loader"></div>
+
+      <div class="d-flex my_search">
+        <input class="me-2" type="text" placeholder="Cerca progetto" />
+        <select class="w-100 me-2">
           <option value="repositories">repositories</option>
           <option value="users">users</option>
         </select>
         <button class="btn btn-primary">Cerca</button>
       </div>
     </header>
-    <main>
+
+    <main class="py-5">
       <div class="container">
         <div class="row"></div>
       </div>

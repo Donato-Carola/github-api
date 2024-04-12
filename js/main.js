@@ -12,7 +12,7 @@ searchButton.addEventListener('click', function () {
 
 
   //aggiungere propria APIKEY git
-
+ 
 
 
   const searchTerm = searchInput.value;
@@ -27,11 +27,17 @@ searchButton.addEventListener('click', function () {
     }
   })
   .then(response => {
-     loader.style.display = 'none';
-    // Gestione della risposta
+ 
     console.log('response', response.data);
-    // Esempio di cosa fare con la risposta
-    displaySearchResults(response.data.items); // Supponendo che l'array degli elementi restituiti sia accessibile tramite response.data.items
+    if(response.data.items.length == 0){
+      displaySearchResults([]);
+    }else{
+       displaySearchResults(response.data.items); 
+     
+    }
+   
+   
+    loader.style.display = 'none';
    
   })
   .catch(error => {
@@ -49,6 +55,7 @@ function displaySearchResults(results) {
   row.innerHTML = ''; // Pulizia dei risultati precedenti
 
   if(results.length == 0){
+    loader.style.display = 'none';
     const resultElement = document.createElement('div');
     resultElement.classList.add('col-12');
     resultElement.innerHTML = `
@@ -60,18 +67,20 @@ function displaySearchResults(results) {
       results.forEach(element => {
    
     const resultElement = document.createElement('div');
-    resultElement.classList.add( 'col-sm-12', 'col-md-6', 'col-lg-3' );
+    resultElement.classList.add( 'col-sm-12', 'col-md-6', 'col-lg-3','mb-3' );
     resultElement.innerHTML = `
-    <div class='card'>
-     <h1>
-     ciao</h1> 
-     <img src=" ${ 'owner' in element ?  element.owner.avatar_url : element.avatar_url}" alt="">
+    <div class='card container h-100 p-0'>
     
+     <img id="img_account" src=" ${ 'owner' in element ?  element.owner.avatar_url : element.avatar_url}" alt="">
+     <p>
+      ${element.description}
+     </p>
     </div>
          `; 
         // Esempio: visualizza il nome completo del repository
     row.append(resultElement);
   });
+  
   }
 
 }  
