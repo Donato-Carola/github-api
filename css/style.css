@@ -33,6 +33,13 @@
     }
 
     select>option{
-       width: 50px;
+       width: 20px;
     }
+}
+
+
+
+.my_link{
+  width: 20px;
+  height: 20px;
 }
